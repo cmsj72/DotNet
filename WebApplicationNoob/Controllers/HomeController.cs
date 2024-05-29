@@ -67,6 +67,8 @@ namespace WebApplicationNoob.Controllers
         //  System.Net.Http 네임스페이스 사용해야함
         public HttpResponseMessage Upload()
         {
+            //  req.Files는 파일 정보와 파일데이터를 가지고 있음.
+            //  복수 파일들이 업로드 될 수 있으며, 각 파일당 다른 이름으로 웹 서버에 저장.
             var req = HttpContext.Request;
 
             //string authVal = req.Headers["Authorization"];
@@ -80,7 +82,10 @@ namespace WebApplicationNoob.Controllers
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
 
-            foreach(string file in req.Files)
+            //  웹 서버의 /Uploads 폴더에 업로드한 파일명 그대로 저장하고 있지만
+            //  동일한 파일명이 다른 사람에 의해 다시 업로드 될 수 있으므로
+            //   Unique한 이름으로 저장하는 것이 좋다.
+            foreach (string file in req.Files)
             {
                 var uploadFile = req.Files[file];
                 var outputFilePath = HttpContext.Server.MapPath("~/Uploads/" + uploadFile.FileName);

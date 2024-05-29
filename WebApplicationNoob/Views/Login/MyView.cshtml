@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "MyView";
+}
+@using GuestBook.Models
+@model WebApplicationNoob.Models.Guest
+<h2>@ViewBag.Title</h2>
+<p>
+    Method: @ViewData["MethodName"]
+    <br />
+
+    <div>@Model.Id : @Model.Name </div>
+    <div>
+        @Model.Message
+    </div>
+</p>
+@{
+    int count = ViewBag.count;
+    string[] list = { "A", "B", "C" };
+}
+<p>
+    @* 조건문 *@
+    @if (count <= 0)
+    {
+        <div>데이터가 없습니다.</div>
+    }
+    else
+    {
+        <div>@count 건의 데이터가 있습니다. </div>
+    }
+
+    @switch (count)
+    {
+        case 1:
+            <div>하나</div>
+            break;
+        case 2:
+            <div>둘</div>
+            break;
+        default:
+            <div>셋 이상</div>
+            break;
+    }
+</p>
+
+<p>
+    @*반복문*@
+    @for (int i = 0; i < count; i++)
+    {
+        <div>@i</div>
+    }
+</p>
+@foreach (var item in list)
+{
+    <p>@item</p>
+}
+
+<p>
+    @{ int ix = 1;}
+    @while (ix < 10)
+    {
+        <div>@ix</div>
+        ix++;
+    }
+</p>
+
+@using GuestBook.Models
+@model WebApplicationNoob.Models.Guest
+
+<h2>@ViewBag.Title</h2>
+<p>
+    @ViewData["MethodName"]
+    <br />
+
+    <div>@Model.Id : @Model.Name</div>
+    <div>
+        @Model.Message
+    </div>
+</p>
