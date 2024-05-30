@@ -1,0 +1,10 @@
+﻿@model List<WebApplicationNoob.Models.Guest>
+
+<h2>Guests</h2>
+
+@foreach (var row in Model)
+{
+    <div>ID: @row.Id, Name: @row.Name</div>
+    <div>--- @row.Message</div>
+}
+

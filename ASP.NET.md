@@ -107,3 +107,15 @@
 
 
 
+### Entity Framework
+
+------
+
+- C#과 같은 객체 지향형 프로그래밍(OOP) 언어에서 DB를 쉽게 사용하기 위한 ORM(Object-Relational Mapping) 도구
+- Entity Framework 모델
+  - (1) Code First, (2) Model First, (3) Database First
+  - Model First와 Database First 접근 모델은 Visual Studio의 Visual Model Designer (EDMX)를 통해 객체/테이블 매핑을 디자인하는 방식으로, Database First 접근 모델은 기존 DB로부터 테이블 구조들을 읽어 Visual Model을 구성하는 것, Model First는 기존 DB가 없을 때 직접 Visual Model Designer에 Entity 들을 하나씩 추가해 가면서 데이타 모델을 구성하는 방식, Model First / Database First 방식은 Visual Model Designer에 디자인한 것을 *.edmx 라는 파일에 저장
+  - Code First 접근 방식은 Visual Model Designer / EDMX 를 사용하지 않고 데이타 모델을 C# 클래스로 직접 코딩하는 방식으로 향후 Entity Framework은 Code First 모델 만을 지원할 것이므로 (주: EFv6는 3 개 모두 지원하고 있음) 여기서는 Code First 방식 만을 설명
+- Code First
+  - C# 클래스로 테이블의 구조를 정의, 클래스의 속성을 테이블의 컬럼에 매핑
+  - DB를 미리 설계하지 않고 C# 클래스들로 Domain Object들을 정의하고 프로그램 실행 시 DB가 없으면 자동으로 DB를 생성하는 방식(기업 환경에서는 DB팀이 별도로 있거나 정교한 DB 설계를 미리 하는 경우가 많음. 이런 경우 기존 DB 구조와 매핑하는 C# 클래스들을 정의하고 DB 생성 없이 사용)

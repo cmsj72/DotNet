@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -32,6 +34,24 @@ namespace WebApplicationNoob.Models
         }
     }
 
+    //  EntityFramework(System.Data.Entity)의 DbContext 클래스를 상속
+    public class GuestDbContext : DbContext
+    {
+        //  base 클래스의 생성자를 호출
+        //  이를 통해 처음 GuestDbCOntext 객체가 생성되면 (Web.config의 정의에 따라)
+        //  기존 DB가 없는 경우 자동으로 DB를 생성
+        //  별도의 설정이 없이 디폴트로는 App_Data 폴더에 해당 클래스명(GuestDbContext)를 따서 Local DB 파일(*.mdf)를 생성
+        public GuestDbContext() : base()
+        {
+
+        }
+
+        public DbSet<Guest> Guests { get; set; }
+    }
+
+    //  [Table(테이블명)] Attribute는 DB에서 생성될 테이블명을 명시적으로 지정
+    //  명시하지 않으면 디폴트로 클래스명을 테이블명으로 사용
+    [Table("Guest")]
     public class Guest
     {
         public int Id { get; set; }
